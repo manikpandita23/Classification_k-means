@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classifier</title>
+</head>
+<body>
+    <h1>Image Classifier</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="imagefile">
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+    {% if cluster_centers %}
+        <h2>Cluster Centers:</h2>
+        <ul>
+            {% for center in cluster_centers %}
+                <li>{{ center }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Image with Clustered Points:</h2>
+        <img src="{{ image_path }}" width="500">
+    {% endif %}
+</body>
+</html>
